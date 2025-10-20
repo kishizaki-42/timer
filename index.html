@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>シンプルタイマー</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="panel">
+      <img src="images/timer.png" alt="タイマーアイコン" class="app__icon" width="96" height="96" decoding="async">
+      <h1 class="app__title">タイマー</h1>
+      <div class="mode-switch" role="tablist">
+        <button class="mode-switch__btn is-active" data-mode="countdown" role="tab" aria-selected="true" type="button">
+          カウントダウン
+        </button>
+        <button class="mode-switch__btn" data-mode="stopwatch" role="tab" aria-selected="false" type="button">
+          ストップウォッチ
+        </button>
+      </div>
+      <div class="timer" role="timer" aria-live="polite" aria-atomic="true">
+        <span id="hours">00</span>
+        <span class="timer__separator">:</span>
+        <span id="minutes">00</span>
+        <span class="timer__separator">:</span>
+        <span id="seconds">00</span>
+      </div>
+      <form id="setup-form" class="setup" autocomplete="off" data-mode="countdown">
+        <label class="setup__field">
+          <span>時間</span>
+          <input id="input-hours" type="number" min="0" max="23" value="0" inputmode="numeric">
+        </label>
+        <label class="setup__field">
+          <span>分</span>
+          <input id="input-minutes" type="number" min="0" max="59" value="5" inputmode="numeric">
+        </label>
+        <label class="setup__field">
+          <span>秒</span>
+          <input id="input-seconds" type="number" min="0" max="59" value="0" inputmode="numeric">
+        </label>
+      </form>
+      <div class="presets" data-mode="countdown">
+        <button id="preset-5min" class="button button--ghost" type="button">5分セット</button>
+      </div>
+      <div class="controls">
+        <button id="start-button" class="button button--primary" type="button">スタート</button>
+        <button id="pause-button" class="button" type="button" disabled>一時停止</button>
+        <button id="reset-button" class="button" type="button" disabled>リセット</button>
+      </div>
+      <p id="message" class="message" role="alert" aria-live="assertive"></p>
+      <div class="progress" aria-hidden="true">
+        <div id="progress-bar" class="progress__bar"></div>
+      </div>
+      <p class="hint">
+        完了時に短いバイブレーションとシステム通知を送信します（対応ブラウザのみ）。
+      </p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
